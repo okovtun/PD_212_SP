@@ -1,4 +1,5 @@
 ﻿https://github.com/okovtun/PD_212_SP.git
+https://www.youtube.com/playlist?list=PLeqyOOqxeiIMjqxgAd5DzA8ruWa5tlQbe
 
 Project:	Processes
 Solution:	IntroductionToSP

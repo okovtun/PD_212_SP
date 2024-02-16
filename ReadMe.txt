@@ -5,6 +5,9 @@ Project:	Processes
 Solution:	IntroductionToSP
 
 TODO:
+Написать диспетчер задач.
+
+DONE:
 Завести дочерние процессы.
 
 DONE:

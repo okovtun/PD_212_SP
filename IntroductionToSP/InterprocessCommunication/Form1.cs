@@ -23,21 +23,40 @@ namespace InterprocessCommunication
 		public static extern IntPtr SendMessage(IntPtr hwnd, uint uMsg, int wParam, [MarshalAs(UnmanagedType.LPStr)]string lParam);
 		List<Process> processes = new List<Process>();
 		int count = 0;
+		string path;
+		public string Path
+		{
+			get => path;
+			set
+			{
+				path = value;
+				LoadAvailableAssemblies(path);
+			}
+		}
 		public Form1()
 		{
 			InitializeComponent();
-			LoadAvailableAssemblies();
+			Path = Application.StartupPath;
+			//LoadAvailableAssemblies(Path);
+			buttonStart.Enabled = false;
 			buttonStop.Enabled = false;
 			buttonCloseWindow.Enabled = false;
 		}
-		void LoadAvailableAssemblies()
+		void LoadAvailableAssemblies(string path)
 		{
 			//MessageBox.Show(this, Application.StartupPath, "Info",MessageBoxButtons.OK, MessageBoxIcon.Information);
 			string except = new FileInfo(Application.ExecutablePath).Name;
 			except.Substring(0, except.IndexOf("."));
-			string[] files = Directory.GetFiles(Application.StartupPath, "*.exe");
-			foreach(string file in files)
+			LoadFilesByType(path, "*.exe");
+			LoadFilesByType(path, "*.lnk");
+		}
+		void LoadFilesByType(string path, string format)
+		{
+			string[] files = Directory.GetFiles(path, format);
+			//string[] files = Directory.GetFiles(Application.StartupPath, "*.lnk");
+			foreach (string file in files)
 			{
+				string except = new FileInfo(Application.ExecutablePath).Name;
 				string fileName = new FileInfo(file).Name;
 				if (fileName.IndexOf(except) == -1)
 					listBoxAssemblies.Items.Add(fileName);
@@ -52,7 +71,7 @@ namespace InterprocessCommunication
 			processes.Add(proc);
 			if (Process.GetCurrentProcess().Id == GetParentProcessId(proc.Id))
 			{
-				MessageBox.Show(this, proc.ProcessName + " дочерний процесс текущего процесса.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				//MessageBox.Show(this, proc.ProcessName + " дочерний процесс текущего процесса.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				proc.EnableRaisingEvents = true;
 				proc.Exited += Proc_Exited;
 				SendMessage(proc.MainWindowHandle, WM_SETTEXT, 0, $"Child process #{count++}");
@@ -158,6 +177,14 @@ namespace InterprocessCommunication
 			{
 				process.Kill();
 			}
+		}
+
+		private void buttonChooseDirectory_Click(object sender, EventArgs e)
+		{
+			FolderBrowserDialog dialog = new FolderBrowserDialog();
+			dialog.SelectedPath = Path;
+			dialog.ShowDialog();
+			Path = dialog.SelectedPath;
 		}
 	}
 }

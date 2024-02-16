@@ -36,6 +36,7 @@
 			this.buttonStop = new System.Windows.Forms.Button();
 			this.buttonCloseWindow = new System.Windows.Forms.Button();
 			this.buttonRefresh = new System.Windows.Forms.Button();
+			this.buttonChooseDirectory = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// listBoxProcesses
@@ -114,11 +115,22 @@
 			this.buttonRefresh.UseVisualStyleBackColor = true;
 			this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
 			// 
+			// buttonChooseDirectory
+			// 
+			this.buttonChooseDirectory.Location = new System.Drawing.Point(214, 222);
+			this.buttonChooseDirectory.Name = "buttonChooseDirectory";
+			this.buttonChooseDirectory.Size = new System.Drawing.Size(75, 23);
+			this.buttonChooseDirectory.TabIndex = 8;
+			this.buttonChooseDirectory.Text = "Directory";
+			this.buttonChooseDirectory.UseVisualStyleBackColor = true;
+			this.buttonChooseDirectory.Click += new System.EventHandler(this.buttonChooseDirectory_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(509, 269);
+			this.Controls.Add(this.buttonChooseDirectory);
 			this.Controls.Add(this.buttonRefresh);
 			this.Controls.Add(this.buttonCloseWindow);
 			this.Controls.Add(this.buttonStop);
@@ -144,6 +156,7 @@
 		private System.Windows.Forms.Button buttonStop;
 		private System.Windows.Forms.Button buttonCloseWindow;
 		private System.Windows.Forms.Button buttonRefresh;
+		private System.Windows.Forms.Button buttonChooseDirectory;
 	}
 }
 

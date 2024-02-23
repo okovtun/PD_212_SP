@@ -1,11 +1,20 @@
 ﻿https://github.com/okovtun/PD_212_SP.git
 https://www.youtube.com/playlist?list=PLeqyOOqxeiIMjqxgAd5DzA8ruWa5tlQbe
 
+TODO:
+https://www.codewars.com/kata/578b4f9b7c77f535fc00002f
+https://www.codewars.com/kata/578df8f3deaed98fcf0001e9
+
+1. Машина должна заводиться и расходовать топливо на холостом ходу;
+2. Когда уровень топлива ниже 5 литров, должен загореться индикатор 'LOW FUEL';
+
 Project:	Processes
 Solution:	IntroductionToSP
 
 TODO:
 Написать диспетчер задач.
+https://stackoverflow.com/questions/1277556/c-sharp-calculate-cpu-usage-for-a-specific-application
+???DataBinding???
 
 DONE:
 Завести дочерние процессы.
